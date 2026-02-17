@@ -1,0 +1,34 @@
+#pink {
+    width: 50%;
+    max-width: 300px;
+}
+
+.pink {
+    position: absolute;
+    top: 0%;
+    left: 24%;
+}
+
+.green {
+    position: absolute;
+    left: 8%;
+    top: 30%;
+}
+
+.purple {
+    position: absolute;
+    top: 45%;
+    left: 38%;
+}
+
+.blue {
+    position: absolute;
+    left: 8%;
+    top: 70%;
+}
+
+.planet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,0 +1,54 @@
+#dani-definition-right {
+    transform: scaleX(-1);
+    position: absolute;
+    top: 70%;
+    left: 60%;
+    width: 30%;
+    z-index: 2;
+}
+
+.mini-text {
+    direction: rtl;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 7.3%;
+    left: 20%;
+    z-index: 2;
+    color: #3A184B;
+    font-weight: 700;
+}
+
+.left {
+    left: 10%;
+}
+
+#astroid-definition {
+    width: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.astroid {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.astroid:hover {
+    transform: scale(1.08);
+}
+
+.glow img {
+    animation: pulseGlow 1.5s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from {
+        filter: drop-shadow(0 0 5px #c084fc);
+    }
+
+    to {
+        filter: drop-shadow(0 0 20px #c084fc);
+    }
+}

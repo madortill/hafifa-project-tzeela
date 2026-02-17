@@ -1,0 +1,47 @@
+.learn-intro {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-size: cover;
+}
+
+.text {
+    position: absolute;
+    top: 30%;
+    text-align: center;
+    max-width: 400px;
+    font-size: 1.2rem;
+    direction: rtl;
+}
+
+.next-button {
+    z-index: 3;
+}
+
+.subj-header {
+    position: absolute;
+    top: 15%;
+    max-width: 300px;
+    text-align: center;
+    direction: rtl;
+    font-family: "space-font";
+    z-index: 2;
+}
+
+#pink-half {
+    position: absolute;
+    bottom: -50%;
+    width: 150vw;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+#dani-learn {
+    width: 40%;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}

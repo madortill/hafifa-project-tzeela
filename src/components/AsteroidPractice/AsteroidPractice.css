@@ -1,0 +1,40 @@
+.half-planet {
+    position: absolute;
+    bottom: -50%;
+    width: 150vw;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+#dani-definition-right {
+    transform: scaleX(-1);
+    position: absolute;
+    top: 70%;
+    left: 60%;
+    width: 30%;
+    z-index: 2;
+}
+
+.mini-text {
+    direction: rtl;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 7.3%;
+    left: 20%;
+    z-index: 2;
+    color: #3A184B;
+    font-weight: 700;
+}
+
+.left {
+    left: 10%;
+}
+
+#astroid-definition {
+    width: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
