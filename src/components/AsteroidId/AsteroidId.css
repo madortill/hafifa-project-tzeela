@@ -1,5 +1,5 @@
 
-.asteroid-info-id {
+.asteroid-id {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -9,4 +9,18 @@
     align-items: center;
     overflow: hidden;
     direction: rtl;
+}
+
+.id-div {
+    position: absolute;
+    top: 28%;
+    background-color: #292947;
+    border-radius: 30px;
+    width: 85%;
+    height: 48%;
+    max-width: 400px;
+    padding: 6% 5%;
+    text-align: center;
+    z-index: 2;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
 }
