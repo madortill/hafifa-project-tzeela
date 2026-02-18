@@ -3,7 +3,7 @@ import Roadmap from "../Roadmap/Roadmap";
 import Learn from "../Learn/Learn";
 import DefinitionControl from "../DefinitionControl/DefinitionControl";
 import AsteroidInfo from "../AsteroidInfo/AsteroidInfo";
-import AsteroidPractice from "../AsteroidPractice/AsteroidPractice";
+import AsteroidPracticeControl from "../AsteroidPracticeControl/AsteroidPracticeControl";
 import Header from "../Header/Header";
 
 const Content = () => {
@@ -36,7 +36,7 @@ const Content = () => {
             {currentSubPage === "learn" && <Learn onBack={handleBack} />}
             {currentSubPage === "definition" && <DefinitionControl onBack={handleBack} />}
             {currentSubPage === "asteroidInfo" && <AsteroidInfo onBack={handleBack} />}
-            {currentSubPage === "asteroidPractice" && <AsteroidPractice onBack={handleBack} />}
+            {currentSubPage === "asteroidPractice" && <AsteroidPracticeControl onBack={handleBack} />}
         </div>
     );
 };
