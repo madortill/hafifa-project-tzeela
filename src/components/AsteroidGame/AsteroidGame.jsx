@@ -84,11 +84,14 @@ const AsteroidGame = ({ onFinish, onBack }) => {
 
                 <div id="spaceship-base">
                     <img src={SpaceshipBase} alt="spaceship" id="spaceship-base-img" />
-                    <h2 id="small-header"><span id="x">X</span>, <span id="y">Y</span></h2>
+                    <h2 id="small-header">
+                        <span id="x">{currentAsteroid.x}</span>,
+                        <span id="y">{currentAsteroid.y}</span>
+                    </h2>
                 </div>
 
                 <div>
-                    <img src={DaniHead} alt="dani logo" id="dani-logo-talk"/>
+                    <img src={DaniHead} alt="dani logo" id="dani-logo-talk" />
                     <p id="message">אני סומך עליכם!</p>
                 </div>
             </div>
@@ -119,14 +122,22 @@ const AsteroidGame = ({ onFinish, onBack }) => {
                     <button onClick={() => handleAnswer("wrong")}>
                         תשובה שגויה
                     </button>
+
+                    <button onClick={() => handleAnswer("wrong")}>
+                        תשובה שגויה
+                    </button>
+
+                    <button onClick={() => handleAnswer("wrong")}>
+                        תשובה שגויה
+                    </button>
                 </div>
             )}
 
             {popup && (
                 <div className="popup">
                     <p>
-                        {popup === "correct" && "פיצוץ מוצלח!"}
-                        {popup === "wrong" && "טעות!"}
+                        {popup === "correct" && "פגעת בול!"}
+                        {popup === "wrong" && "קצת פספסת..."}
                         {popup === "timeout" && "נגמר הזמן!"}
                     </p>
                     <button onClick={closePopup}>המשך</button>

@@ -84,7 +84,6 @@
     bottom: 35px;
     left: 130px;
     font-size: 1.2rem;
-    font-weight: bold;
 }
 
 .grid {
@@ -99,17 +98,15 @@
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(6, 1fr);
 }
-
+/* 
 .grid-asteroid {
     color: transparent;
-    /* Hides text, user clicks the visual area */
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Popup and Zoomed View */
 .popup,
 .zoomed-asteroid {
     position: fixed;
@@ -130,4 +127,4 @@
     border-radius: 5px;
     margin-bottom: 20px;
     transition: width 1s linear;
-}
+} */
