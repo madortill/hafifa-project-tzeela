@@ -16,14 +16,118 @@
 
 .game-bg-div {
     position: absolute;
-    top: 28%;
+    top: 25%;
     background-color: #292947;
-    border-radius: 30px;
-    width: 85%;
-    height: 60%;
-    max-width: 400px;
-    padding: 6% 5%;
-    text-align: center;
-    z-index: 2;
+    border-radius: 40px;
+    width: 90%;
+    height: 65%;
+    max-width: 450px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+} 
+
+#instructions {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+/* The Grid Container */
+#grid {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Spaceship and Bubble UI at bottom */
+#spaceship-base {
+    position: absolute;
+    bottom: -30px;
+    right: -10px;
+    width: 150px;
+    z-index: 5;
+}
+
+#spaceship-base-img {
+    width: 100%;
+}
+
+#small-header {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    color: white;
+    margin: 0;
+}
+
+/* Dani's Message Box */
+#dani-logo-talk {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 100px;
+    background-color: #070727;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+#message {
+    position: absolute;
+    bottom: 35px;
+    left: 130px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.grid {
+    position: absolute;
+    top: 39%;
+    width: 69%;
+    left: 19%;
+    max-width: 350px;
+    height: 31vh;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+.grid-asteroid {
+    color: transparent;
+    /* Hides text, user clicks the visual area */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup and Zoomed View */
+.popup,
+.zoomed-asteroid {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #232343;
+    padding: 30px;
+    border-radius: 20px;
+    z-index: 100;
+    text-align: center;
+    border: 2px solid #00a2ff;
+}
+
+.timer-bar {
+    height: 10px;
+    background-color: #00a2ff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: width 1s linear;
 }

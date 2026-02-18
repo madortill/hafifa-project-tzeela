@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import PracticeLeave from "../PracticeLeave/PracticeLeave";
 import Grid from "../../assets/img/grid.svg";
 import SpaceshipBase from "../../assets/img/spaceship-bubble.svg";
+import DaniHead from "../../assets/img/dani-head.svg";
 
 const shuffle = (array) => [...array].sort(() => Math.random() - 0.5);
 
@@ -75,7 +76,7 @@ const AsteroidGame = ({ onFinish, onBack }) => {
             </h1>
 
             <div className="game-bg-div">
-                <p className="text">
+                <p id="instructions">
                     לחצו על הטיל עם הקאורדינאטות שנשלחו אליכם מתחנת החלל למטה
                 </p>
 
@@ -84,6 +85,11 @@ const AsteroidGame = ({ onFinish, onBack }) => {
                 <div id="spaceship-base">
                     <img src={SpaceshipBase} alt="spaceship" id="spaceship-base-img" />
                     <h2 id="small-header"><span id="x">X</span>, <span id="y">Y</span></h2>
+                </div>
+
+                <div>
+                    <img src={DaniHead} alt="dani logo" id="dani-logo-talk"/>
+                    <p id="message">אני סומך עליכם!</p>
                 </div>
             </div>
 
