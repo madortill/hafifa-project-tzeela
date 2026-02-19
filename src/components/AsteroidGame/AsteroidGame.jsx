@@ -140,7 +140,6 @@ const AsteroidGame = ({ onFinish, onBack }) => {
                         {popup === "wrong" && "קצת פספסת..."}
                         {popup === "timeout" && "נגמר הזמן!"}
                     </p>
-                    <button onClick={closePopup}>המשך</button>
                 </div>
             )}
 
