@@ -15,11 +15,9 @@ const AsteroidPractice = ({ onBack, onNext }) => {
       <img src={GameIntro} alt="game intro" id="game-intro-img" />
       <img src={AstronautHi} alt="Astronaut Dani" id="dani-definition-right" />
       <p className="mini-text">חושב שהבנת?</p>
-      
       <button className="button next-button left" onClick={onNext}>
         קח אותי לתרגול!
       </button>
-      
       <img src={bluePlanet} alt="blue planet" id="blue-half" className="half-planet" />
     </div>
   );
