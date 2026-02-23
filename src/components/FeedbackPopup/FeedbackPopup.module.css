@@ -1,0 +1,95 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.popupBox {
+    background: white;
+    padding: 2rem;
+    border-radius: 22px;
+
+    text-align: center;
+
+    min-width: 280px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.message {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.button {
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    border: none;
+
+    background: #4caf50;
+    color: white;
+    cursor: pointer;
+}
+
+.fullOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    animation: slideIn 0.4s ease-out;
+}
+
+.correct {
+    background-color: #6d8c6d;
+}
+
+/* Greenish/Grey as per image */
+.wrong {
+    background-color: #8c4b4b;
+}
+
+.timeout {
+    background-color: #a65d50;
+}
+
+.msg {
+    color: white;
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+    margin-bottom: 3rem;
+    line-height: 1.2;
+}
+
+.icon {
+    width: clamp(100px, 40vw, 200px);
+    margin-bottom: 3rem;
+}
+
+.navBtn {
+    background: #0c0c2a;
+    color: white;
+    border: none;
+    padding: 0.8rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}

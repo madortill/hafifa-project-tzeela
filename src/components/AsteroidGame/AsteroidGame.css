@@ -28,7 +28,7 @@
     align-items: center;
     z-index: 1;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
-} 
+}
 
 #instructions {
     text-align: center;
@@ -98,6 +98,7 @@
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(6, 1fr);
 }
+
 /* 
 .grid-asteroid {
     color: transparent;
@@ -128,3 +129,72 @@
     margin-bottom: 20px;
     transition: width 1s linear;
 } */
+
+
+.quiz-layer {
+    position: fixed;
+    inset: 0;
+    background: #292947;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10% 5%;
+}
+
+.timer-container {
+    width: 80%;
+    height: 2rem;
+    background: #1a1a35;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.timer-bar {
+    height: 10%;
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+    transition: width 1s linear;
+}
+
+.ans-btn {
+    width: 90%;
+    padding: clamp(0.8rem, 3vw, 1.2rem);
+    margin: 0.5rem 0;
+    background: #3b3b5e;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: clamp(1rem, 4vw, 1.3rem);
+}
+
+#dani-logo-talk {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: clamp(100px, 25vw, 140px); /* Responsive width */
+    background-color: #070727;
+    border-radius: 20px;
+    padding: 10px;
+    
+    /* Pull to the very front */
+    z-index: 20; 
+    
+    /* Layout for Dani + Text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#dani-logo-talk img {
+    width: 60%; /* Dani's head size */
+    margin-bottom: 5px;
+}
+
+#dani-logo-talk strong {
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    font-family: sans-serif; /* Ensure clear numbers */
+    z-index: 21;
+}
