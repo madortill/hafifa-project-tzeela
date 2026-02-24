@@ -1,0 +1,125 @@
+:root {
+    --phone-max-width: 450px;
+    --phone-max-height: 932px;
+}
+
+.container {
+    background-color: #3B6771;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: none;
+    font-family: "rubik";
+}
+
+.mainWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: var(--phone-max-width);
+    max-height: var(--phone-max-height);
+    background-color: #0c0c2a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    direction: rtl;
+}
+
+.backButton {
+    position: absolute;
+    top: clamp(4rem, 8vh, 5rem);
+    right: 5%;
+    width: clamp(2rem, 10vw, 2.5rem);
+    cursor: pointer;
+    z-index: 90;
+}
+
+.startButton {
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+    width: clamp(220px, 70%, 350px);
+    height: clamp(3rem, 7vh, 4rem);
+    background-color: #3A184B;
+    color: white;
+    border: none;
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
+    font-weight: 600;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.mainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: clamp(6rem, 10vh, 8rem);
+}
+
+.textSection {
+    width: 85%;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: clamp(1rem, 4.5vw, 1.2rem);
+    line-height: 1.35;
+    margin-bottom: 2rem;
+}
+
+.textSection p {
+    margin: 0 0 0.25rem 0;
+}
+
+.visualGroup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    margin-top: auto;
+}
+
+.astronaut {
+    width: clamp(150px, 45%, 220px);
+    z-index: 20;
+    margin-bottom: -4vh;
+}
+
+.planet {
+    background-color: #505086;
+    width: 200%;
+    height: 35vh;
+    border-radius: 50% 50% 0 0;
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+.fadeIn {
+    animation: fadeInAnimation 1.3s ease forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -29,7 +29,7 @@ const DefinitionControl = ({ onBack }) => {
 
   const confirmLeave = () => {
     setShowLeavePopup(false);
-    setStep(prev => prev - 1);
+    onBack();
   };
 
   // normal pages
