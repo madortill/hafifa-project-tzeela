@@ -1,0 +1,106 @@
+:root {
+    --phone-max-width: 450px;
+    --phone-max-height: 932px;
+}
+
+@font-face {
+    font-family: "space-font";
+    src: url(../../assets/fonts/OzradCLM/OzradCLM-Bold.otf) format("opentype");
+}
+
+.container {
+    background-color: #3B6771;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.mainWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: var(--phone-max-width);
+    max-height: var(--phone-max-height);
+    background-color: #0c0c2a;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    direction: rtl;
+}
+
+.mainWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.mapArea {
+    position: relative;
+    width: 100%;
+    min-height: 120vh;
+    padding-top: 5vh;
+}
+
+.planet {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.planet img {
+    height: auto;
+    transition: transform 0.2s ease;
+}
+
+.planet:active img {
+    transform: scale(0.95);
+}
+
+.planet p {
+    color: white;
+    font-family: "space-font";
+    margin-top: 10px;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    text-align: center;
+    white-space: nowrap;
+}
+
+.pink {
+    top: -7%;
+    right:  5%;
+}
+
+.pink img {
+    width: clamp(250px, 65vw, 350px);
+}
+
+.green {
+    top: 23%;
+    left: 10%;
+}
+
+.green img {
+    width: clamp(100px, 28vw, 140px);
+}
+
+.purple {
+    top: 35%;
+    right: 8%;
+}
+
+.purple img {
+    width: clamp(160px, 45vw, 220px);
+}
+
+.blue {
+    top: 55%;
+    left: 10%;
+}
+
+.blue img {
+    width: clamp(130px, 35vw, 180px);
+}

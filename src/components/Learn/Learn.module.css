@@ -58,7 +58,7 @@
     width: 85%;
     text-align: center;
     color: #FFFFFF;
-    font-size: clamp(1.5rem, 6vw, 2rem);
+    font-size: clamp(1.5rem, 7vw, 2rem);
     font-family: "space-font";
     margin-bottom: 1.5rem;
     flex-shrink: 0;
