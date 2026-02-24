@@ -29,9 +29,13 @@
     direction: rtl;
 }
 
+.mainWrapper > :first-child {
+    flex-shrink: 0;
+}
+
 .backButton {
     position: absolute;
-    top: clamp(4rem, 8vh, 5rem);
+    top: clamp(5rem, 9vh, 5rem);
     right: 5%;
     width: clamp(2rem, 10vw, 2.5rem);
     cursor: pointer;

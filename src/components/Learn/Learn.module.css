@@ -1,0 +1,134 @@
+:root {
+    --phone-max-width: 450px;
+    --phone-max-height: 932px;
+}
+
+.container {
+    background-color: #3B6771;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: none;
+}
+
+.mainWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: var(--phone-max-width);
+    max-height: var(--phone-max-height);
+    background-color: #0c0c2a;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    direction: rtl;
+}
+
+.mainContent {
+    flex-grow: 1;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: clamp(5rem, 12vh, 8rem);
+    min-height: min-content;
+}
+
+.mainWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.backButton {
+    position: absolute;
+    top: clamp(2rem, 3vh, 5rem);
+    right: 5%;
+    width: clamp(2rem, 10vw, 2.5rem);
+    cursor: pointer;
+    z-index: 90;
+}
+
+.subjHeader {
+    width: 85%;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    font-family: "space-font";
+    margin-bottom: 1.5rem;
+    flex-shrink: 0;
+}
+
+.text {
+    width: 85%;
+    max-width: 400px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: clamp(1rem, 4.5vw, 1.25rem);
+    line-height: 1.4;
+    flex-shrink: 0;
+}
+
+.visualGroup {
+    width: 100%;
+    position: relative;
+    flex-grow: 1;
+    min-height: 350px;
+    margin-top: 2rem;
+}
+
+.daniLearn {
+    position: absolute;
+    bottom: 22vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(130px, 38vw, 200px);
+    z-index: 2;
+}
+
+.planetContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.pinkHalf {
+    width: 200%;
+    flex-shrink: 0;
+}
+
+.nextButton {
+    position: absolute;
+    bottom: 12vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: clamp(180px, 60%, 300px);
+    height: clamp(3rem, 7vh, 4rem);
+    background-color: #3A184B;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
