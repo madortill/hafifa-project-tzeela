@@ -35,9 +35,9 @@
     font-size: 1.1rem;
     margin-bottom: 20px;
     padding: 0 10px;
+    color: white;
 }
 
-/* The Grid Container */
 #grid {
     width: 100%;
     max-width: 350px;
@@ -45,92 +45,109 @@
     padding: 5px;
 }
 
-/* Spaceship and Bubble UI at bottom */
 #spaceship-base {
     position: absolute;
-    bottom: -30px;
-    right: -10px;
-    width: 150px;
-    z-index: 5;
+    bottom: -15px;
+    right: 15px;
+    width: 140px;
+    z-index: 20;
 }
 
 #spaceship-base-img {
     width: 100%;
+    position: absolute;
+    bottom: -3vh;
+    right: -30%;
 }
 
-#small-header {
+#target-coords {
     position: absolute;
-    top: 35%;
-    left: 50%;
+    position: absolute;
+    top: -13vh;
+    left: 71%;
     transform: translate(-50%, -50%);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: white;
+    z-index: 21;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+#dani-logo-talk {
+    position: absolute;
+    bottom: 3%;
+    left: 5%;
+    background-color: #070727;
+    border-radius: 20px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 20;
+    flex-direction: column;
+}
+
+#dani-logo-talk img {
+    width: 40px;
     margin: 0;
 }
 
-/* Dani's Message Box */
-#dani-logo-talk {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    width: 100px;
-    background-color: #070727;
-    border-radius: 20px;
-    padding: 10px;
+#message-text {
+    margin: 0;
+    color: white;
+    font-size: 0.9rem;
+    white-space: nowrap;
 }
 
-#message {
+.game-bg-div {
+    position: relative;
+}
+
+.grid-wrapper {
     position: absolute;
-    bottom: 35px;
-    left: 130px;
-    font-size: 1.2rem;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    max-width: 350px;
+    aspect-ratio: 1 / 1;
+}
+
+#grid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
 }
 
 .grid {
     position: absolute;
-    top: 39%;
-    width: 69%;
-    left: 19%;
-    max-width: 350px;
-    height: 31vh;
-    z-index: 10;
+    inset: 0;
+
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+
+    z-index: 5;
 }
 
-/* 
 .grid-asteroid {
-    color: transparent;
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
-.popup,
-.zoomed-asteroid {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #232343;
-    padding: 30px;
-    border-radius: 20px;
-    z-index: 100;
-    text-align: center;
-    border: 2px solid #00a2ff;
+.grid-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
 }
 
-.timer-bar {
-    height: 10px;
-    background-color: #00a2ff;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    transition: width 1s linear;
-} */
-
-
+/* Quiz Layer */
 .quiz-layer {
     position: fixed;
     inset: 0;
@@ -152,7 +169,7 @@
 }
 
 .timer-bar {
-    height: 10%;
+    height: 100%;
     background: linear-gradient(90deg, #4caf50, #8bc34a);
     transition: width 1s linear;
 }
@@ -166,35 +183,4 @@
     border-radius: 15px;
     color: white;
     font-size: clamp(1rem, 4vw, 1.3rem);
-}
-
-#dani-logo-talk {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    width: clamp(100px, 25vw, 140px); /* Responsive width */
-    background-color: #070727;
-    border-radius: 20px;
-    padding: 10px;
-    
-    /* Pull to the very front */
-    z-index: 20; 
-    
-    /* Layout for Dani + Text */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-#dani-logo-talk img {
-    width: 60%; /* Dani's head size */
-    margin-bottom: 5px;
-}
-
-#dani-logo-talk strong {
-    font-size: clamp(1rem, 3vw, 1.4rem);
-    font-family: sans-serif; /* Ensure clear numbers */
-    z-index: 21;
 }

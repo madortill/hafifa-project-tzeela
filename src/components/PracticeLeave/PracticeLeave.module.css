@@ -20,6 +20,7 @@
     width: 90%;
     text-align: center;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: solid #F47160 4px;
   }
   
   .modal h2 {

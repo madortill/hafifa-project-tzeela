@@ -9,54 +9,69 @@ import SpaceshipBase from "../../assets/img/spaceship-bubble.svg";
 import AsteroidImg from "../../assets/img/asteroidcircle.svg";
 import DaniHead from "../../assets/img/dani-head.svg";
 
-const shuffle = array => [...array].sort(() => Math.random() - 0.5);
-
 export default function AsteroidGame({ onBack }) {
     const navigate = useNavigate();
-    const [asteroids] = useState(() => shuffle(gameData));
+
     const [currentIndex, setCurrentIndex] = useState(0);
     const [zoomed, setZoomed] = useState(false);
     const [timeLeft, setTimeLeft] = useState(60);
     const [popup, setPopup] = useState(null);
     const [showLeavePopup, setShowLeavePopup] = useState(false);
+    const [daniMessage, setDaniMessage] = useState("אני סומך עליכם!");
+    const currentAsteroid = gameData[currentIndex];
 
-    const currentAsteroid = asteroids[currentIndex];
-
+    // Shuffle answers רק להצגה
     const shuffledAnswers = useMemo(() => {
         if (!currentAsteroid) return [];
+
         const answers = [
             { text: currentAsteroid.correct, isCorrect: true },
-            ...(currentAsteroid.wrongAnswers?.map(w => ({ text: w, isCorrect: false })) || [])
+            ...(currentAsteroid.wrongAnswers?.map(w => ({
+                text: w,
+                isCorrect: false
+            })) || [])
         ];
-        return shuffle(answers);
+
+        return [...answers].sort(() => Math.random() - 0.5);
     }, [currentAsteroid]);
 
-    // Timer Logic
+    // Timer
     useEffect(() => {
         if (!zoomed || popup) return;
-        if (timeLeft <= 0) {
-            setPopup("timeout");
-            return;
-        }
-        const timer = setInterval(() => setTimeLeft(t => t - 1), 1000);
-        return () => clearInterval(timer);
-    }, [zoomed, timeLeft, popup]);
 
-    // FIX: logic for selecting the asteroid on the grid
-    const handleSelect = (selectedAsteroid) => {
-        if (selectedAsteroid.id === currentAsteroid.id) {
-            setZoomed(true); // Open the quiz if correct asteroid is clicked
+        const timer = setInterval(() => {
+            setTimeLeft(prev => {
+                if (prev <= 1) {
+                    clearInterval(timer);
+                    setPopup("timeout");
+                    return 0;
+                }
+                return prev - 1;
+            });
+        }, 800);
+
+        return () => clearInterval(timer);
+    }, [zoomed, popup]);
+
+    const handleSelect = (clickedId) => {
+        if (!currentAsteroid) return;
+        if (clickedId === currentAsteroid.id) {
+            setDaniMessage("פגעת בול!");
+            setTimeout(() => {
+                setZoomed(true);
+            }, 1000);
+
         } else {
-            // Optional: Provide feedback for clicking the wrong asteroid on the grid
-            setPopup("wrong");
+            setDaniMessage("קצת פספסת...");
         }
     };
 
-    // FIX: handleAnswer now properly triggers the popup state
     const handleAnswer = (isCorrect) => {
         if (isCorrect) {
+            setDaniMessage("פגעת בול!");
             setPopup("correct");
         } else {
+            setDaniMessage("קצת פספסת...");
             setPopup("wrong");
         }
     };
@@ -65,8 +80,9 @@ export default function AsteroidGame({ onBack }) {
         setPopup(null);
         setZoomed(false);
         setTimeLeft(60);
-        if (currentIndex < asteroids.length - 1) {
-            setCurrentIndex(p => p + 1);
+        setDaniMessage("אני סומך עליכם!");
+        if (currentIndex + 1 < gameData.length) {
+            setCurrentIndex(prev => prev + 1);
         } else {
             navigate("/end");
         }
@@ -76,69 +92,69 @@ export default function AsteroidGame({ onBack }) {
 
     return (
         <div className="game-wrapper">
-            <button className="back-button" onClick={() => setShowLeavePopup(true)}>
+            <button
+                className="back-button"
+                onClick={() => setShowLeavePopup(true)}
+            >
                 חזור
             </button>
 
             <h1 className="subj-header">פיצוץ אסטרואידים - תרגול</h1>
 
             <div className="game-bg-div">
-
                 <p id="instructions">
                     לחצו על האסטרואיד עם הקואורדינטות שנשלחו אליכם
                 </p>
 
-                {/* Grid Background */}
-                <img src={Grid} alt="grid" id="grid" />
-
-                {/* Dani + Message */}
                 <div id="dani-logo-talk">
                     <img src={DaniHead} alt="dani" />
-                    <p id="message">
-                        אני סומך עליכם!
-                    </p>
+                    <p id="message-text">{daniMessage}</p>
                 </div>
 
-                {/* Spaceship Bubble */}
                 <div id="spaceship-base">
-                    <img src={SpaceshipBase} alt="spaceship" />
-                    <strong>
+                    <img
+                        src={SpaceshipBase}
+                        alt="spaceship"
+                        id="spaceship-base-img"
+                    />
+                    <strong id="target-coords">
                         {currentAsteroid.x}, {currentAsteroid.y}
                     </strong>
                 </div>
 
-                {/* Asteroid Grid */}
-                <div className="grid">
-                    {asteroids.map(a => (
-                        <div
-                            key={a.id}
-                            className="grid-asteroid"
-                            style={{
-                                gridColumn: a.x + 1,
-                                gridRow: 7 - a.y
-                            }}
-                            onClick={() => handleSelect(a)}
-                        >
-                            <img
-                                src={AsteroidImg}
-                                alt="asteroid"
-                                className="asteroid-img"
+                <div className="grid-wrapper">
+                    <img src={Grid} alt="grid" className="grid-image" />
+
+                    <div className="grid">
+                        {gameData.map((a) => (
+                            <div
+                                key={a.id}
+                                className="grid-asteroid"
                                 style={{
-                                    width: `${a.size || 60}px`
+                                    gridColumn: 7 - a.y,
+                                    gridRow: 7 - a.x
                                 }}
-                            />
-                        </div>
-                    ))}
+                                onClick={() => handleSelect(a.id)}
+                            >
+                                <img
+                                    src={AsteroidImg}
+                                    alt="asteroid"
+                                    style={{ width: `${a.size || 45}px` }}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
-            {/* Quiz Layer */}
             {zoomed && !popup && (
                 <div className="quiz-layer">
                     <div className="timer-container">
                         <div
                             className="timer-bar"
-                            style={{ width: `${(timeLeft / 60) * 100}%` }}
+                            style={{
+                                width: `${(timeLeft / 60) * 100}%`
+                            }}
                         />
                     </div>
 
@@ -158,7 +174,6 @@ export default function AsteroidGame({ onBack }) {
                 </div>
             )}
 
-            {/* Popup */}
             {popup && (
                 <FeedbackPopup
                     type={popup}
@@ -180,4 +195,4 @@ export default function AsteroidGame({ onBack }) {
             )}
         </div>
     );
-}
+} 
