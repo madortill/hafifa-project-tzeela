@@ -20,7 +20,6 @@ export default function AsteroidGame({ onBack }) {
     const [daniMessage, setDaniMessage] = useState("אני סומך עליכם!");
     const currentAsteroid = gameData[currentIndex];
 
-    // Shuffle answers רק להצגה
     const shuffledAnswers = useMemo(() => {
         if (!currentAsteroid) return [];
 
@@ -35,7 +34,6 @@ export default function AsteroidGame({ onBack }) {
         return [...answers].sort(() => Math.random() - 0.5);
     }, [currentAsteroid]);
 
-    // Timer
     useEffect(() => {
         if (!zoomed || popup) return;
 

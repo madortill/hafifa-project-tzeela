@@ -38,10 +38,8 @@
 }
 
 .backButton {
-    position: absolute;
-    top: clamp(2rem, 3vh, 5rem);
-    right: 5%;
-    width: clamp(2rem, 10vw, 2.5rem);
+    width: 2.5rem;
+    height: 2.5rem;
     cursor: pointer;
     z-index: 90;
 }
@@ -76,15 +74,14 @@
     align-items: center;
 }
 
-.idCard {
-    position: relative;
+.quizCard {
     background-color: #292947;
     border-radius: 30px;
-    width: 85%;
+    width: 88%;
     max-width: 380px;
-    padding: 1.3rem;
+    padding: 2rem 0.5rem;
     text-align: center;
-    z-index: 1;
+    z-index: 5;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
@@ -92,34 +89,63 @@
     margin-top: 2vh;
 }
 
-.cardTitle {
+.cardHeaderSmall {
     color: #FFFFFF;
-    font-size: 1.6rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: -1.5rem;
+}
+
+.cardHeaderLarge {
+    color: #FFFFFF;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
     font-weight: 800;
 }
 
-.cardText {
+.redText {
+    color: #F47160;
+}
+
+.greenText {
+    color: #AFE2B1;
+}
+
+.cardBodyText {
+    width: 85%;
+    max-width: 400px;
+    text-align: center;
     color: #FFFFFF;
     font-size: clamp(1rem, 4.5vw, 1.25rem);
-    line-height: 1.5;
-    margin-bottom: 1rem;
+    line-height: 1.4;
+    flex-shrink: 0;
 }
 
-.grownAsteroid {
-    width: clamp(100px, 50vw, 210px);
-    height: auto;
-    max-height: 210px;
-    margin-top: auto;
+.readyText {
+    color: #FFFFFF;
+    margin-bottom: 0.4rem;
+    font-size: clamp(0.9rem, 1rem, 1.2rem);
+    pointer-events: auto;
 }
 
-.daniHi {
+.startButton {
+    width: 47%;
+    padding: 0.8rem;
+    background-color: #AB479A;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.dani {
     position: absolute;
-    bottom: 12vh;
-    right: 5%;
-    width: clamp(100px, 30vw, 150px);
-    z-index: 3;
-    transform: scaleX(-1);
+    bottom: 10vh;
+    left: 4%;
+    width: clamp(100px, 30vw, 180px);
+    z-index: 20;
+    transform: scaleX(1);
 }
 
 .planetContainer {
@@ -136,24 +162,31 @@
     pointer-events: none;
 }
 
-.purpleHalf {
+.greenHalf {
     width: 180%;
     flex-shrink: 0;
 }
 
 .footer {
     position: absolute;
-    bottom: 11vh;
+    bottom: 10vh;
     width: 100%;
     display: flex;
-    justify-content: center;
-    z-index: 10;
-    pointer-events: none;
-    left: -11vw;
+    flex-direction: column;
+    align-items: center;
+    z-index: 30;
+    right: -14vw;
+}
+
+.miniTextQuiz {
+    color: #3A184B;
+    font-size: clamp(0.9rem, 1rem, 1.2rem);
+    font-weight: 700;
+    pointer-events: auto;
 }
 
 .nextButton {
-    width: clamp(120px, 38%, 210px);
+    width: clamp(160px, 48%, 200px);
     height: clamp(3rem, 7vh, 4rem);
     background-color: #3A184B;
     color: white;
@@ -162,42 +195,33 @@
     font-size: clamp(1.1rem, 4vw, 1.3rem);
     font-weight: 700;
     cursor: pointer;
-    pointer-events: auto;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
 }
 
-.nextButton:active {
-    transform: scale(0.95);
-}
-
-@media (max-height: 740px) {
-    .idCard {
+@media (max-height: 700px) {
+    .quizCard {
         padding: 1rem;
-        margin-top: 28px;
+        margin-top: 0;
     }
 
-    .cardTitle {
-        font-size: 1.3rem;
-        margin-bottom: 0.4rem;
+    .cardHeaderLarge {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
     }
 
-    .cardText {
-        font-size: 0.9rem;
+    .cardBodyText {
+        font-size: 0.85rem;
         line-height: 1.3;
+        margin-bottom: 0.8rem;
     }
 
-    .grownAsteroid {
-        width: clamp(50px, 50vw, 150px);
-        max-height: 150px;
+    .footer {
+        bottom: 12vh;
     }
 
     .daniHi {
-        width: 90px;
-        bottom: 15vh;
-    }
-
-    .subjHeader {
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
+        width: 100px;
+        bottom: 14vh;
     }
 }
