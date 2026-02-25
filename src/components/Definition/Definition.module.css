@@ -11,7 +11,6 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    border: none;
 }
 
 .mainWrapper {
@@ -30,19 +29,18 @@
     direction: rtl;
 }
 
-.mainContent {
-    flex-grow: 1;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding-top: clamp(5rem, 12vh, 8rem);
-    min-height: min-content;
-}
-
 .mainWrapper::-webkit-scrollbar {
     display: none;
+}
+
+.header {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    flex-shrink: 0;
+    z-index: 100;
 }
 
 .backButton {
@@ -52,6 +50,17 @@
     width: clamp(2rem, 10vw, 2.5rem);
     cursor: pointer;
     z-index: 90;
+}
+
+.mainContent {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 1rem;
+    min-height: min-content;
 }
 
 .subjHeader {
@@ -77,18 +86,29 @@
 .visualGroup {
     width: 100%;
     position: relative;
-    flex-grow: 1;
-    min-height: 350px;
-    margin-top: 2rem;
+    flex: 1;
+    min-height: 0;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
 }
 
-.daniLearn {
+.asteroid {
+    width: clamp(120px, 40vw, 200px);
+    margin-top: 1vh;
+    z-index: 1;
+}
+
+.daniHi {
     position: absolute;
-    bottom: 22vh;
-    left: 50%;
-    transform: translateX(-50%);
-    width: clamp(130px, 38vw, 200px);
-    z-index: 2;
+    bottom: 12vh;
+    right: 5%;
+    width: clamp(100px, 30vw, 150px);
+    z-index: 3;
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
 }
 
 .planetContainer {
@@ -96,44 +116,54 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 30vh;
+    height: 25vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     overflow: hidden;
-    z-index: 1;
+    z-index: 2;
     pointer-events: none;
 }
 
-.pinkHalf {
-    width: 200%;
+.greenHalf {
+    width: 180%;
     flex-shrink: 0;
 }
 
-.nextButton {
+.footer {
     position: absolute;
-    bottom: 12vh;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 10vh;
+    left: -13vw;
+    width: 100%;
     z-index: 10;
-    width: clamp(180px, 60%, 300px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+}
+
+.miniText {
+    color: #3A184B;
+    font-size: 1rem;
+    font-weight: 700;
+    pointer-events: auto;
+}
+
+.nextButton {
+    width: clamp(180px, 65%, 300px);
     height: clamp(3rem, 7vh, 4rem);
     background-color: #3A184B;
     color: white;
     border: none;
-    border-radius: 30px;
-    font-size: clamp(1.1rem, 4vw, 1.4rem);
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 35px;
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
+    font-weight: 700;
     cursor: pointer;
-    flex-shrink: 0;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
 }
 
 @media (max-height: 700px) {
-
     .subjHeader {
         margin-bottom: 0.5rem;
         font-size: 1.3rem;
@@ -144,8 +174,20 @@
         line-height: 1.2;
     }
 
-    .daniLearn {
-        width: clamp(70px, 32vw, 120px);
-        bottom: 25vh;
+    .asteroid {
+        width: 100px; 
+        margin-top: 1vh;
     }
+
+    .footer {
+        bottom: 13vh;
+    }
+
+    .planetContainer {
+        height: 30vh;
+    }
+
+    .daniHi {
+        bottom: 17vh;
+    }    
 }
