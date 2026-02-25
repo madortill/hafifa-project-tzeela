@@ -1,10 +1,11 @@
 import { useState } from "react";
-import "./AsteroidInfo.css";
+import styles from "./AsteroidInfo.module.css";
 import asteroidsData from "../../data/asteroidsData.json";
 import purplePlanet from "../../assets/img/planets/purple-planet.svg";
 import AstronautHi from "../../assets/img/astronaut-saying-hi.svg";
 import SimpleAstroid from "../../assets/img/asteroidcircle.svg";
 import AsteroidId from "../AsteroidId/AsteroidId";
+import backBtn from "../../assets/img/back-btn.svg";
 
 const AsteroidInfo = ({ onBack }) => {
   const [selectedAsteroid, setSelectedAsteroid] = useState(null);
@@ -16,35 +17,39 @@ const AsteroidInfo = ({ onBack }) => {
     setSelectedAsteroid(asteroid);
   };
 
-  const handleReturn = () => setSelectedAsteroid(null);
-
-  const allVisited = visited.length === asteroidsData.length;
-
-  if (selectedAsteroid) {
-    return <AsteroidId asteroid={selectedAsteroid} onBack={handleReturn} onFinish={allVisited ? onBack : null} />;
-  }
+  if (selectedAsteroid) return <AsteroidId asteroid={selectedAsteroid} onBack={() => setSelectedAsteroid(null)} onFinish={visited.length === asteroidsData.length ? onBack : null} />;
 
   return (
-    <div className="asteroid-info-intro">
-      <button className="back-button" onClick={onBack}>חזור</button>
+    <div className={styles.container}>
+      <div className={styles.mainWrapper}>
+        <header className={styles.header}>
+          <img src={backBtn} alt="back" className={styles.backButton} onClick={onBack} />
+        </header>
 
-      <h1 className="subj-header">סוגי אסטרואידים - מול מי אנחנו נלחמים?</h1>
+        <main className={styles.mainContent}>
+          <h1 className={styles.subjHeader}>סוגי אסטרואידים - מול מי אנחנו נלחמים?</h1>
+          <p className={styles.text}>יש שלושה סוגים מרכזיים של אסטרואידים.
+            לחצו על האסטרואידים למטה כדי ללמוד עוד על כל אחד מהם.</p>
 
-      <p className="text">לחצו על כל אסטרואיד כדי ללמוד עליו.</p>
+          <div className={styles.visualGroup}>
+            <div className={styles.asteroidsMap}>
+              {asteroidsData.map((asteroid, index) => (
+                <div key={asteroid.id} className={`${styles.asteroidItem} ${styles[`pos${index}`]} ${!visited.includes(asteroid.id) ? styles.glow : ""}`} onClick={() => handleSelect(asteroid.id)}>
+                  <img src={SimpleAstroid} alt={asteroid.title} />
+                  <p>{asteroid.title}</p>
+                </div>
+              ))}
+            </div>
 
-      <div className="astroids">
-        {asteroidsData.map(asteroid => (
-          <div key={asteroid.id} className={`astroid ${!visited.includes(asteroid.id) ? "glow" : ""}`} onClick={() => handleSelect(asteroid.id)}>
-            <img src={SimpleAstroid} alt={asteroid.title} />
-            <p>{asteroid.title}</p>
+            <img src={AstronautHi} alt="Astronaut Dani" className={styles.daniHi} />
+            <div className={styles.planetContainer}><img src={purplePlanet} alt="purple planet" className={styles.purpleHalf} /></div>
+
+            {visited.length === asteroidsData.length && (
+              <div className={styles.footer}><button className={styles.nextButton} onClick={onBack}>חזרה לחללית</button></div>
+            )}
           </div>
-        ))}
+        </main>
       </div>
-
-      {allVisited && <button className="button next-button" onClick={onBack}>חזרה לחללית</button>}
-
-      <img src={AstronautHi} alt="Astronaut Dani saying hi" id="dani-definition-right" />
-      <img src={purplePlanet} alt="purple planet" id="purple-half" className="half-planet" />
     </div>
   );
 };
