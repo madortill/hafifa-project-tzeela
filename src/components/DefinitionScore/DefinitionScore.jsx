@@ -1,29 +1,81 @@
-import "./DefinitionScore.css";
+import React, { useState, useEffect } from "react";
+import ReactConfetti from "react-confetti";
+import styles from "./DefinitionScore.module.css";
 import greenPlanet from "../../assets/img/planets/green-planet.svg";
 import AstronautHi from "../../assets/img/astronaut-saying-hi.svg";
 
 const TOTAL_QUESTIONS = 5;
 
 const DefinitionScore = ({ failCount, onFinish }) => {
+  const [showConfetti, setShowConfetti] = useState(true);
+  const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerHeight });
+
   const percentScore = Math.round((TOTAL_QUESTIONS / (TOTAL_QUESTIONS + failCount)) * 100);
 
+  useEffect(() => {
+    // Shorter timer for a faster "hit and run" feel
+    const timer = setTimeout(() => setShowConfetti(false), 3500);
+
+    const handleResize = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <div className="definition-score-end">
-      <h1 className="subj-header">הגדרה - אז מהו אסטרואיד?</h1>
-      <div id="bg-div-score">
-        <p className="text" id="top">כל הכבוד!</p>
-        <div id="circle-div">
-          <p id="number">{percentScore}</p>
-        </div>
-        <p className="text" id="bottom">
-          עברת את החידון עם <span>{failCount}</span> טעויות!!!
-        </p>
+    <div className={styles.container}>
+
+      <div className={styles.mainWrapper}>
+        <header className={styles.header}></header>
+
+        <main className={styles.mainContent}>
+          <h1 className={styles.subjHeader}>הגדרה - <br />אז מהו אסטרואיד?</h1>
+
+          <div className={styles.visualGroup}>
+            <div className={styles.quizCard}>
+              <p className={styles.feedbackTop}>כל הכבוד!</p>
+
+              <div className={styles.scoreCircle}>
+                <span className={styles.scoreNumber}>{percentScore}</span>
+              </div>
+
+              <p className={styles.feedbackBotton}>
+                עברת את החידון עם <span className={styles.failHighlight}>{failCount}</span> טעויות!!!
+              </p>
+            </div>
+
+            <img src={AstronautHi} alt="Astronaut Dani" className={styles.dani} />
+
+            <div className={styles.planetContainer}>
+              <img src={greenPlanet} alt="green planet" className={styles.greenHalf} />
+            </div>
+
+            <div className={styles.footer}>
+              <button className={styles.nextButton} onClick={onFinish}>
+                חזרה לחללית
+              </button>
+            </div>
+          </div>
+        </main>
       </div>
-      <img src={AstronautHi} alt="Astronaut Dani" id="dani-definition-right" />
-      <button className="button next-button left" onClick={onFinish} id="next-score">
-        חזרה לחללית
-      </button>
-      <img src={greenPlanet} alt="green planet" id="green-half" className="half-planet" />
+
+      {showConfetti && (
+        <ReactConfetti
+          width={windowSize.width}
+          height={windowSize.height}
+          numberOfPieces={1000}
+          recycle={false}
+          gravity={0.2}
+          initialVelocityY={25}
+          initialVelocityX={10}
+          tweenDuration={2000}
+          colors={['#F47160', '#AFE2B1', '#AB479A', '#3A184B', '#FFFFFF', '#FFD700', '#00FFFF']}
+          style={{ position: 'fixed', top: 0, left: 0, zIndex: 9999, pointerEvents: 'none' }}
+        />
+      )}
     </div>
   );
 };
