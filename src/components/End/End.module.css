@@ -3,7 +3,7 @@
     src: url(../../assets/fonts/OzradCLM/OzradCLM-Bold.otf) format("opentype");
 }
 
-#end {
+.endContainer {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -16,7 +16,7 @@
     text-align: center;
 }
 
-.subj-header {
+.subjHeader {
     margin-top: 25%;
     width: 85%;
     color: white;
@@ -27,7 +27,7 @@
     white-space: pre-line;
 }
 
-#dani-end {
+.daniEnd {
     position: absolute;
     bottom: 18%;
     width: 40%;
@@ -35,11 +35,34 @@
     z-index: 5;
 }
 
-.end-mini-text {
+.endMiniText {
     position: absolute;
     bottom: 14%;
     color: white;
     font-size: 1.1rem;
     z-index: 10;
     opacity: 0.9;
+}
+
+.halfPlanet {
+    width: 180%;
+}
+
+.nextButton {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(180px, 65%, 300px);
+    height: clamp(3rem, 7vh, 4rem);
+    background-color: #3A184B;
+    color: white;
+    border: none;
+    border-radius: 35px;
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
+    font-weight: 700;
+    cursor: pointer;
+    pointer-events: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    z-index: 80;
 }
